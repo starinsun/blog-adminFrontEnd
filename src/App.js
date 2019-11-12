@@ -1,26 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+/*
+ * @Date: 2019-11-13 00:01:11
+ * @LastEditors: Asen Wang
+ * @LastEditTime: 2019-11-13 00:09:50
+ * @content: I
+ */
+import React from "react";
+import { Button } from "antd";
+import "antd/dist/antd.css";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Button>Hello</Button>
+    </>
   );
-}
+};
 
 export default App;
