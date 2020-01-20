@@ -5,5 +5,11 @@
 }
 
 .for-container {
-  height: 80vh !important;
+  height: 78vh !important;
+  margin-right: 1px !important;
+  margin-top: 2rem;
+}
+
+body {
+  overflow-x: hidden;
 }

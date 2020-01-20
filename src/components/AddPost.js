@@ -1,12 +1,12 @@
 /*
  * @Date: 2019-11-21 17:07:29
  * @LastEditors  : Asen Wang
- * @LastEditTime : 2020-01-19 17:56:31
+ * @LastEditTime : 2020-01-20 12:06:18
  * @content: I
  */
 import React, { useState } from "react";
 import Editor from "for-editor";
-import { notification, Button, Modal, Input, Checkbox } from "antd";
+import { notification, Button, Modal, Input, Checkbox, message } from "antd";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 
@@ -22,7 +22,7 @@ const AddPost = () => {
   const [tags, setTag] = useState([]);
   const [csdn, setCsdn] = useState("");
   const [juejin, setJuejin] = useState("");
-  const boxValue = ["react", "vue", "angular", "life", "css", "nest", "RN"];
+  const boxValue = ["react", "vue", "angular", "life", "css", "nest", "rn"];
 
   const [visible, setVisible] = useState(false);
   const [confirmload, setConfirm] = useState(false);
@@ -56,14 +56,13 @@ const AddPost = () => {
       views: 0
     };
     const jwt = localStorage.getItem("jwt");
-    console.table(data);
     try {
-      await axios.post("http://localhost:4000/posts", data, {
+      await axios.post("http://localhost:4000/admin/posts", data, {
         headers: { Authorization: `Bearer ${jwt}` }
       });
       nav.push("/admin/success");
     } catch (err) {
-      console.log(err);
+      message.error("输入不正确");
     }
 
     setVisible(false);
@@ -74,7 +73,11 @@ const AddPost = () => {
   };
 
   return (
-    <div>
+    <div
+      style={{
+        width: "80vw"
+      }}
+    >
       <div
         style={{ display: "flex", justifyContent: "space-between", margin: 10 }}
       >

@@ -1,7 +1,7 @@
 /*
  * @Date: 2019-11-29 22:38:12
  * @LastEditors  : Asen Wang
- * @LastEditTime : 2020-01-19 17:53:45
+ * @LastEditTime : 2020-01-20 15:54:27
  * @content: I
  */
 import React from "react";
@@ -21,7 +21,7 @@ const ResultP = () => {
             type='primary'
             key='console'
             onClick={() => {
-              nav.push("/admin");
+              nav.goBack();
             }}
           >
             返回

@@ -1,7 +1,7 @@
 /*
  * @Date: 2019-11-15 20:12:52
  * @LastEditors  : Asen Wang
- * @LastEditTime : 2020-01-19 17:47:59
+ * @LastEditTime : 2020-01-20 16:09:48
  * @content: I
  */
 import React, { useState } from "react";
@@ -13,9 +13,11 @@ import AddLife from "../components/AddLife";
 import LifeCard from "../components/LifeCard";
 import PostList from "../components/PostList";
 import UserManage from "../components/UserManage";
-import Result from "../components/Result";
-import Comments from "../components/Comments";
+import Results from "../components/Result";
+import PostUpdate from "../components/PostUpdate";
 import { Route, useHistory } from "react-router-dom";
+import Comment from "../components/Comment";
+import All from "../components/All";
 
 const { Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -38,7 +40,7 @@ const Admin = () => {
           <Menu.Item
             key='1'
             onClick={() => {
-              nav.push("/admin");
+              nav.push("/admin/all");
             }}
           >
             <Icon type='pie-chart' />
@@ -82,10 +84,10 @@ const Admin = () => {
             <Menu.Item
               key='5'
               onClick={() => {
-                nav.push("/admin/comments");
+                nav.push("/admin/comment");
               }}
             >
-              评论管理
+              文章更新
             </Menu.Item>
           </SubMenu>
           <Menu.Item
@@ -110,15 +112,17 @@ const Admin = () => {
       </Sider>
       <Layout>
         <Content style={{ margin: "16px" }}>
+          <Route path='/admin/all' component={All}></Route>
           <Route path='/admin/addpost' component={AddPost}></Route>
           <Route path='/admin/addlife' component={AddLife}></Route>
           <Route path='/admin/postlist' component={PostList}></Route>
           <Route path='/admin/lifecard' component={LifeCard}></Route>
-          <Route path='/admin/comments' component={Comments}></Route>
+          <Route path='/admin/postUpdate/:id' component={PostUpdate}></Route>
           <Route path='/admin/users' component={UserManage}></Route>
-          <Route path='/admin/success' component={Result}></Route>
+          <Route path='/admin/success' component={Results}></Route>
+          <Route path='/admin/comment' component={Comment}></Route>
         </Content>
-        <Footer style={{ textAlign: "center" }}>www.eswang.top</Footer>
+        <Footer style={{ textAlign: "center" }}>www.asenwang.top</Footer>
       </Layout>
     </Layout>
   );

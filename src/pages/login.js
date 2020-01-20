@@ -1,7 +1,7 @@
 /*
  * @Date: 2019-11-13 00:13:21
  * @LastEditors  : Asen Wang
- * @LastEditTime : 2020-01-17 22:55:56
+ * @LastEditTime : 2020-01-20 16:06:35
  * @content: I
  */
 import React, { useState } from "react";
@@ -39,7 +39,7 @@ const Login = () => {
       console.log(jwt.data);
       setIsLogined(false);
       localStorage.setItem("jwt", jwt.data["access_token"]);
-      history.push("/admin");
+      history.push("/admin/all");
     } else {
       message.error("登陆失败");
       setIsLogined(false);
