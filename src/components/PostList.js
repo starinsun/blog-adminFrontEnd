@@ -21,7 +21,7 @@ const PostList = () => {
   const nav = useHistory();
 
   const getList = async () => {
-    let res = await axios.get(`${apiUrl}/admin/posts`, {
+    let res = await axios.get(`${apiUrl}admin/posts`, {
       headers: { Authorization: `Bearer ${jwt}` }
     });
     setList(res.data);
@@ -33,7 +33,7 @@ const PostList = () => {
       content: "如果你点击OK按钮，文章将会永远被删除，无法恢复。",
       onOk() {
         axios
-          .delete(`${apiUrl}/admin/posts/post/${id}`, {
+          .delete(`${apiUrl}admin/posts/post/${id}`, {
             headers: { Authorization: `Bearer ${jwt}` }
           })
           .then(res => {

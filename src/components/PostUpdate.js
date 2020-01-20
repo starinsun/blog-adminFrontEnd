@@ -28,7 +28,7 @@ const Comments = () => {
   const [content, setCont] = useState("");
 
   const getPost = async () => {
-    let res = await Axios.get(`${apiUrl}/admin/posts/post/${id}`, {
+    let res = await Axios.get(`${apiUrl}admin/posts/post/${id}`, {
       headers: { Authorization: `Bearer ${jwt}` }
     });
     setList(res.data);
@@ -54,7 +54,7 @@ const Comments = () => {
       tags: list.tags,
       views: list.views
     };
-    await Axios.put(`${apiUrl}/admin/posts/post/${id}`, newData, {
+    await Axios.put(`${apiUrl}admin/posts/post/${id}`, newData, {
       headers: { Authorization: `Bearer ${jwt}` }
     });
     nav.push("/admin/postlist");

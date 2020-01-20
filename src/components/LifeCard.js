@@ -26,7 +26,7 @@ const LifeCard = () => {
   const { TextArea } = Input;
 
   const getList = async () => {
-    let res = await Axios.get(`${apiUrl}/admin/lives`, {
+    let res = await Axios.get(`${apiUrl}admin/lives`, {
       headers: { Authorization: `Bearer ${jwt}` }
     });
     setList(res.data);
@@ -36,7 +36,7 @@ const LifeCard = () => {
       title: "确定要删除这篇生活记录吗?",
       content: "如果你点击OK按钮，生活记录将会永远被删除，无法恢复。",
       onOk() {
-        Axios.delete(`${apiUrl}/admin/lives/life/${id}`, {
+        Axios.delete(`${apiUrl}admin/lives/life/${id}`, {
           headers: { Authorization: `Bearer ${jwt}` }
         }).then(res => {
           message.success("生活删除成功");
@@ -51,7 +51,7 @@ const LifeCard = () => {
   async function handleOk() {
     setConf(true);
     const data = { image, date, content: cont };
-    await Axios.put(`${apiUrl}/admin/lives/life/${id}`, data, {
+    await Axios.put(`${apiUrl}admin/lives/life/${id}`, data, {
       headers: { Authorization: `Bearer ${jwt}` }
     });
     setConf(false);
@@ -64,10 +64,9 @@ const LifeCard = () => {
     message.info("操作取消");
   }
   async function handleChange(id) {
-    let res = await Axios.get(`${apiUrl}/admin/lives/life/${id}`, {
+    let res = await Axios.get(`${apiUrl}admin/lives/life/${id}`, {
       headers: { Authorization: `Bearer ${jwt}` }
     });
-    console.log(res);
     setDate(res.data.date);
     setImage(res.data.image);
     setCont(res.data.content);

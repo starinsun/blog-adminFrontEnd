@@ -21,7 +21,7 @@ const AddLife = () => {
       jwt = localStorage.getItem("jwt");
 
     try {
-      await Axios.post(`${apiUrl}/admin/lives`, data, {
+      await Axios.post(`${apiUrl}admin/lives`, data, {
         headers: { Authorization: `Bearer ${jwt}` }
       });
       nav.push("/admin/success");

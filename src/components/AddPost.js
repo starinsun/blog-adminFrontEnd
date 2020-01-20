@@ -9,6 +9,7 @@ import Editor from "for-editor";
 import { notification, Button, Modal, Input, Checkbox, message } from "antd";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
+import { apiUrl } from "../utils";
 
 const AddPost = () => {
   const { TextArea } = Input;
@@ -57,7 +58,7 @@ const AddPost = () => {
     };
     const jwt = localStorage.getItem("jwt");
     try {
-      await axios.post("http://localhost:4000/admin/posts", data, {
+      await axios.post(`${apiUrl}admin/posts`, data, {
         headers: { Authorization: `Bearer ${jwt}` }
       });
       nav.push("/admin/success");
@@ -159,7 +160,6 @@ const AddPost = () => {
           preview: true
         }}
         onSave={() => {
-          console.log(post);
           note();
         }}
       />

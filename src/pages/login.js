@@ -1,7 +1,7 @@
 /*
  * @Date: 2019-11-13 00:13:21
  * @LastEditors  : Asen Wang
- * @LastEditTime : 2020-01-20 16:06:35
+ * @LastEditTime : 2020-01-20 21:44:20
  * @content: I
  */
 import React, { useState } from "react";
@@ -10,6 +10,7 @@ import { Card, Input, Icon, Button, Spin, message } from "antd";
 import "../static/css/loginbox.css";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
+import { apiUrl } from "../utils";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -29,14 +30,13 @@ const Login = () => {
     let res = { username, password },
       jwt = {};
     try {
-      jwt = await axios.post("http://localhost:4000/auth", res, {
+      jwt = await axios.post(`${apiUrl}auth`, res, {
         headers: { "Content-Type": "application/json" }
       });
     } catch (error) {
       console.log(error);
     }
     if (jwt.data) {
-      console.log(jwt.data);
       setIsLogined(false);
       localStorage.setItem("jwt", jwt.data["access_token"]);
       history.push("/admin/all");
