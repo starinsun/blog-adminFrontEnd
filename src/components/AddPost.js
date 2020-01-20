@@ -49,7 +49,7 @@ const AddPost = () => {
       img,
       csdn,
       juejin,
-      author: "http://eswang.gitee.io/blog_pic/image/avartar.png",
+      author: "https://eswang.gitee.io/blog_pic/image/avartar.png",
       content: post,
       time: new Date().toLocaleDateString(),
       zan: 0,
