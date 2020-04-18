@@ -39,6 +39,7 @@ const Login = () => {
     if (jwt.data) {
       setIsLogined(false);
       localStorage.setItem("jwt", jwt.data["access_token"]);
+      localStorage.setItem("login", true);
       history.push("/admin/all");
     } else {
       message.error("登陆失败");
@@ -52,8 +53,7 @@ const Login = () => {
         <Card
           title='ESWang Blog Darshboard'
           bordered={true}
-          style={{ width: 400 }}
-        >
+          style={{ width: 400 }}>
           <Input
             id='username'
             size='large'
@@ -82,6 +82,11 @@ const Login = () => {
           </Button>
         </Card>
       </Spin>
+      <div className='foo'>
+        <a className='gx' href='http://www.beian.miit.gov.cn'>
+          鲁ICP备19044799号
+        </a>
+      </div>
     </div>
   );
 };

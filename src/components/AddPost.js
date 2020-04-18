@@ -19,11 +19,22 @@ const AddPost = () => {
   const [title, setTitle] = useState("");
   const [intro, setIntro] = useState("");
   const [readtime, setReadtime] = useState(10);
+  const [date, setDate] = useState("");
   const [img, setImg] = useState("");
   const [tags, setTag] = useState([]);
   const [csdn, setCsdn] = useState("");
   const [juejin, setJuejin] = useState("");
-  const boxValue = ["react", "vue", "angular", "life", "css", "nest", "rn"];
+  const boxValue = [
+    "React",
+    "Vue",
+    "Angular",
+    "Basic",
+    "ECMAScript",
+    "CSS",
+    "Nest",
+    "Native",
+    "Life"
+  ];
 
   const [visible, setVisible] = useState(false);
   const [confirmload, setConfirm] = useState(false);
@@ -51,7 +62,7 @@ const AddPost = () => {
       juejin,
       author: "https://eswang.gitee.io/blog_pic/image/avartar.png",
       content: post,
-      time: new Date().toLocaleDateString(),
+      time: date,
       zan: 0,
       comment: 1,
       views: 0
@@ -74,22 +85,20 @@ const AddPost = () => {
   };
 
   return (
-    <div
-      style={{
-        width: "80vw"
-      }}
-    >
+    <div>
       <div
-        style={{ display: "flex", justifyContent: "space-between", margin: 10 }}
-      >
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          margin: 10
+        }}>
         <h2 style={{ textShadow: "1px 1px 2px #ccc" }}>新建文章页面</h2>
         <Button
           type='primary'
           shape='round'
           icon='edit'
           size='large'
-          onClick={showModal}
-        >
+          onClick={showModal}>
           提交文章
         </Button>
       </div>
@@ -99,8 +108,7 @@ const AddPost = () => {
         title='完善信息'
         onOk={handleOk}
         onCancel={handleCancle}
-        confirmLoading={confirmload}
-      >
+        confirmLoading={confirmload}>
         <div>
           <h3>题目</h3>
           <Input
@@ -110,17 +118,31 @@ const AddPost = () => {
           />
           <h4>简介</h4>
           <TextArea
-            rows={3}
+            rows={2}
             onChange={e => {
               setIntro(e.target.value);
             }}
           />
-          <h4>预计阅读时间</h4>
-          <Input
-            onChange={e => {
-              setReadtime(e.target.value);
-            }}
-          />
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              marginTop: 5
+            }}>
+            <h4>阅读时间</h4>
+            <Input
+              onChange={e => {
+                setReadtime(e.target.value);
+              }}
+              style={{ marginRight: 20 }}
+            />
+            <h4>发布时间</h4>
+            <Input
+              onChange={e => {
+                setDate(e.target.value);
+              }}
+            />
+          </div>
           <h4>输入文章图像连接</h4>
           <Input
             onChange={e => {
@@ -144,7 +166,7 @@ const AddPost = () => {
             <Checkbox.Group
               options={boxValue}
               defaultValue={tags}
-              onChange={value => setTag(value)}
+              onChange={value => setTag(value.map(item => item.toLowerCase()))}
             />
           </div>
         </div>

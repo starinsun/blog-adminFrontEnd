@@ -17,3 +17,11 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+.foo {
+  width: 100px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
